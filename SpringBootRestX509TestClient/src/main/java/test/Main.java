@@ -10,13 +10,13 @@ public class Main
 {
   private static final Logger log = LoggerFactory.getLogger(Main.class);
 
-  final static String KEYSTORE_PASSWORD = "changeity";
+  final static String KEYSTORE_PASSWORD = "ohvei7eH#sha2ri1L";
 
   static
   {
-    System.setProperty("javax.net.ssl.trustStore", Main.class.getClassLoader().getResource("TestService321.priv.jks").getFile());
+    System.setProperty("javax.net.ssl.trustStore", Main.class.getClassLoader().getResource("SpringBootRestX509TestClient.priv.jks").getFile());
     System.setProperty("javax.net.ssl.trustStorePassword", KEYSTORE_PASSWORD);
-    System.setProperty("javax.net.ssl.keyStore", Main.class.getClassLoader().getResource("TestService321.priv.jks").getFile());
+    System.setProperty("javax.net.ssl.keyStore", Main.class.getClassLoader().getResource("SpringBootRestX509TestClient.priv.jks").getFile());
     System.setProperty("javax.net.ssl.keyStorePassword", KEYSTORE_PASSWORD);
 
     javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(new javax.net.ssl.HostnameVerifier()
