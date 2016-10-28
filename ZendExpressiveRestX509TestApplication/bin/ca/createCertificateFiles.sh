@@ -25,6 +25,8 @@ intermediateCaCertFileName="intermediate.ca.certificate.crt"
 intermediateCaCertAlgorithm="-sha256"
 intermediateCaCertValidDays="1825"
 intermediateCaCertSerial="01"                       # <-- update this in case a new cert is created!
+intermediateCaCertExtPath="./"
+intermediateCaCertExtFileName="v3_ca.ext"
 intermediateCaCertChainFileName="intermediate.ca.certificate.chainfile.crt"
 
 
@@ -50,7 +52,7 @@ openssl req -new ${intermediateCaCsrAlgorithm} -key ${intermediateCaPath}${inter
 chmod 444 ${intermediateCaPath}${intermediateCaCsrFileName}
 
 # step 6: create the intermediate certification authority's certificate using the certification signing request and the root certification authority's private key
-openssl x509 -req -days ${intermediateCaCertValidDays} -in ${intermediateCaPath}${intermediateCaCsrFileName} -CA ${rootCaPath}${rootCaCertFileName} -CAkey ${rootCaPath}${rootCaPrivateKeyFileName} -set_serial ${intermediateCaCertSerial} -out ${intermediateCaPath}${intermediateCaCertFileName}
+openssl x509 -req -extfile ${intermediateCaCertExtPath}${intermediateCaCertExtFileName} -days ${intermediateCaCertValidDays} -in ${intermediateCaPath}${intermediateCaCsrFileName} -CA ${rootCaPath}${rootCaCertFileName} -CAkey ${rootCaPath}${rootCaPrivateKeyFileName} -set_serial ${intermediateCaCertSerial} -out ${intermediateCaPath}${intermediateCaCertFileName}
 chmod 444 ${intermediateCaPath}${intermediateCaCertFileName}
 
 # step 7: verify the intermediate certificate
