@@ -1,4 +1,4 @@
-Securing your vHost with SSL certificates via [Let's Encrypt](https://letsencrypt.org/)
+Securing your vHost using a [Let's Encrypt](https://letsencrypt.org/) SSL certificate
 =======================================================================================
 ## What is this all about ?
 This tutorial will guide you through the process of obtaining and installing
@@ -13,6 +13,7 @@ using the Electronic Frontier Foundation's [Certbot Software](https://certbot.ef
 in manual mode to gain the certificate and also support shared hosting.
 
 To obtain the certificate, we have to go through the following steps:
+
 1. Download Certbot software from [Github](https://github.com/certbot/certbot)
 
 Let's begin!
