@@ -44,7 +44,7 @@ the encrypting algorithm's security's upper-bound. Select a key size of your cho
 be using **4096 bits**.
 
 ## Step 3: Run the Certbot software!
-Now that we know the requirements for our testing vHosts certificate, we run
+Now that we know the requirements for our testing vHost's certificate, we run
 the Certbot software on our local machine:
 
 ```bash
@@ -55,8 +55,8 @@ This will check and update the Certbot's software dependencies like python, libs
 Hit 'Y' to install the update. After the update finishes, the Certbot UI will pop up.
 We are asked to enter an email address for urgent notices and lost key recovery.
 
-After that, we told by the UI to check Let's Encrypt's Terms of Service at the URL given in the Certbot UI.
-Read and agree, otherwise canceling the process.
+After that, we are told by the UI to check Let's Encrypt's Terms of Service at the URL given in the Certbot UI.
+We read and agree, otherwise canceling the process.
 
 Finally, we're told that our local machine's IP address "will be publicly logged
 as having requested this certificate" and if we are OK with that. Hit 'Yes'.
