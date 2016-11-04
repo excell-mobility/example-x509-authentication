@@ -78,11 +78,8 @@ $ echo 'o7h_Qhc-GjJAih7MQrLKXNW9lkbLaAUoZBr39RkOL5M.hp8D7bl4glWiyAZnmT_at4sEOh_l
 ```
  
 After that, we access our testing vHost's public directory and put the file
-into the subdirectoy **./well-known/acme-challange** like requested.
-
-We double-check this by opening our favorite browser and entering the file's URL:
+into the subdirectoy **./well-known/acme-challange** like requested. We double-check this by opening our favorite browser and entering the file's URL:
 http://il-test.excell-mobility.de/.well-known/acme-challenge/logw2Uc22wdqdM2ffasSODR171DW8R19u4BKaEsmruw
- 
 This successfully displays the file content, so we're ready to let Certbot do
 his thing and confirm that we legitimately own il-test.excell-mobility.de .
 Hit 'Enter' to continue.
