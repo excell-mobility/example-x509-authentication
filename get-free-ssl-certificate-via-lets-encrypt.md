@@ -62,9 +62,30 @@ Finally, we're told that our local machine's IP address "will be publicly logged
 as having requested this certificate" and if we are OK with that. Hit 'Yes'.
  
 ## Step 4: Confirm domain ownership
-
+Now, Let's Encrypt's challenge is presented to confirm our domain ownership
+over the selected domain. We are asked to place a specifically named text file with a given content
+in our domain's public directory:
  
+> Make sure your web server displays the following content at
+> http://il-test.excell-mobility.de/.well-known/acme-challenge/o7h_Qhc-GjJAih7MQrLKXNW9lkbLaAUoZBr39RkOL5M before continuing:
+>
+> o7h_Qhc-GjJAih7MQrLKXNW9lkbLaAUoZBr39RkOL5M.hp8D7bl4glWiyAZnmT_at4sEOh_lT9BnYA3gI-OEjDE
 
+So we create the file locally and fill in the requested content:
+
+```bash
+$ echo 'o7h_Qhc-GjJAih7MQrLKXNW9lkbLaAUoZBr39RkOL5M.hp8D7bl4glWiyAZnmT_at4sEOh_lT9BnYA3gI-OEjDE' > o7h_Qhc-GjJAih7MQrLKXNW9lkbLaAUoZBr39RkOL5M
+```
+ 
+After that, we access our testing vHost's public directory and put the file
+into the subdirectoy **./well-known/acme-challange** like requested.
+
+We double-check this by opening our favorite browser and entering the file's URL:
+http://il-test.excell-mobility.de/.well-known/acme-challenge/logw2Uc22wdqdM2ffasSODR171DW8R19u4BKaEsmruw
+ 
+This successfully displays the file content, so we're ready to let Certbot do
+his thing and confirm that we legitimately own il-test.excell-mobility.de .
+Hit 'Enter' to continue.
 
 
 
