@@ -98,11 +98,12 @@ Now it's time to validate our new and shiny SSL certificate:
 $ openssl x509 -in /etc/letsencrypt/live/il-test.excell-mobility.de/cert.pem -text
 ```
 
-The certificate is **valid for 90 days** as expected for our domain il-test.excell-mobility.de, created
+The certificate is **valid for 90 days** for our domain il-test.excell-mobility.de, created
 by the **Let's Encrypt Authority X3** using a key size of **4096 bits** . Awesome!
 
 As there are many different web servers out there like Apache webserver, nginx etc., 
 installing this SSL certificate on the web server is out of scope of this tutorial.
-But have no fear, just fire up your favorite browser and enter 'ubuntu install ssl certificate'.
-Cheers! 🍻
+But have no fear, just fire up your favorite browser and enter
+ 
+'ubuntu install ssl certificate'. Cheers! 🍻
 
