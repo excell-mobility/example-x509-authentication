@@ -91,7 +91,7 @@ Hit 'Enter' to continue.
 Certbot created the private key locally (at least they say so) using a key size
 of 4096 bits and put it into the local machine's directory **/etc/letsencrypt/live/il.test.excell-mobility.de** .
 The Certificate Signing Request (CSR) file will be found there, too.
-We need sudo rights to access the the private key.
+We need sudo rights to access the private key.
 
 Now it's time to validate our new and shiny SSL certificate:
 ```bash
@@ -105,5 +105,7 @@ As there are many different web servers out there like Apache webserver, nginx e
 installing this SSL certificate on the web server is out of scope of this tutorial.
 But have no fear, just fire up your favorite browser and enter
  
-'ubuntu install ssl certificate'. Cheers! 🍻
+'ubuntu install ssl certificate'
+
+. Cheers! 🍻
 
