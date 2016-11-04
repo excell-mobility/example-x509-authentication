@@ -35,7 +35,7 @@ and enter the Certbot directory.
 ## Step 2: Think before you type ...
 Before running the Certbot, we should take a moment to think about the 
 SSL certificate's requirements. Using the Certbot software, we are able to gain
-a bundled SSL certificate for our domain, including www.\<yourdomain\>.\<tld\> .
+a bundled SSL certificate for our domain, including www.<yourdomain>.<tld> .
 This is possible by using the -d command-line option, see [command-line options](https://certbot.eff.org/docs/using.html#command-line).
 In our case, this will simply be **il-test.excell-mobility.de** .
 
