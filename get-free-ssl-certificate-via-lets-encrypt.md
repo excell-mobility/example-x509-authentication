@@ -15,11 +15,13 @@ in manual mode to gain the certificate and also support shared hosting.
 To obtain the certificate, we have to go through the following steps:
 
 - Download Certbot software from their offial [Github repository](https://github.com/certbot/certbot)
+- Run Certbot Software to prepare the SSL certificate
+- Confirm the Domain Ownership
 
 Let's begin!
 
 ## Step 1: Downloading Certbot software from GitHub
-Fire up your favorite git client and git clone the Certbot software from the
+On your local machine, fire up your favorite git client and git clone the Certbot software from the
 official GitHub repository:
 
 ```bash
@@ -45,6 +47,24 @@ the encrypting algorithm's security's upper-bound. Select a
 be using **4096 bits**.
 
 ## Step 3: Run the Certbot software!
+Now that we know the requirements for our testing vHosts certificate, we run
+the Certbot software on our local machine:
+
+```bash
+$ ./certbot-auto certonly -a manual --rsa-key-size 4096 -d il-test.excell-mobility.de
+```
+
+This will check and update the Certbot's software dependencies like python, libssl etc.
+Hit 'Y' to install the update. After the update finishes, the Certbot UI will pop up.
+We are asked to enter an email address for urgent notices and lost key recovery.
+
+After that, we told by the UI to check Let's Encrypt's Terms of Service at the URL given in the Certbot UI.
+Read and agree, otherwise canceling the process.
+
+Finally, we're told that our local machine's IP address "will be publicly logged
+as having requested this certificate" and if we are OK with that. Hit 'Yes'.
+ 
+## Step 4: Confirm domain ownership
 
  
 
