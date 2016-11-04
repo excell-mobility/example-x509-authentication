@@ -39,9 +39,8 @@ a bundled SSL certificate for our domain, including www.yourdomainname.tld .
 This is possible by using the -d command-line option, see [command-line options](https://certbot.eff.org/docs/using.html#command-line).
 In our case, this will simply be **il-test.excell-mobility.de** .
 
-Secondly, we need to choose a keysize for our SSL certificate. This will define
-the encrypting algorithm's security's upper-bound. Select a
-[key size](https://en.wikipedia.org/wiki/Key_size) of your choice, here we will
+Secondly, we need to choose a [key size](https://en.wikipedia.org/wiki/Key_size) for our SSL certificate. This will define
+the encrypting algorithm's security's upper-bound. Select a key size of your choice, here we will
 be using **4096 bits**.
 
 ## Step 3: Run the Certbot software!
