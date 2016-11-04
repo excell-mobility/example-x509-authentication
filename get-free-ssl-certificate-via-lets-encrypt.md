@@ -14,7 +14,7 @@ in manual mode to gain the certificate and also support shared hosting.
 
 To obtain the certificate, we have to go through the following steps:
 
-1. Download Certbot software from [Github](https://github.com/certbot/certbot)
+- Download Certbot software from their offial [Github repository](https://github.com/certbot/certbot)
 
 Let's begin!
 
@@ -29,6 +29,25 @@ $ cd certbot
 
 This will download the Certbot software to your current working directory
 and enter the Certbot directory.
+
+## Step 2: Think before you type ...
+Before running the Certbot, we should take a moment to think about the 
+SSL certificate's requirements.
+ 
+Using the Certbot software, we are able to gain
+a bundled SSL certificate for our domain, including www.\<yourdomain>.\<tld> .
+This is possible by using the -d command-line option, see [command-line options](https://certbot.eff.org/docs/using.html#command-line).
+In our case, this will be **simply il-test.excell-mobility.de** .
+
+Secondly, we need to choose a keysize for our SSL certificate. This will define
+the encrypting algorithm's security's upper-bound. Select a
+[key size](https://en.wikipedia.org/wiki/Key_size) of your choice, here we will
+be using **4096 bits**.
+
+## Step 3: Run the Certbot software!
+
+ 
+
 
 
 
