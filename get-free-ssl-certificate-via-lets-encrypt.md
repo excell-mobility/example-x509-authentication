@@ -17,6 +17,7 @@ To obtain the certificate, we have to go through the following steps:
 - Download Certbot software from their offial [Github repository](https://github.com/certbot/certbot)
 - Run Certbot Software to prepare the SSL certificate
 - Confirm the Domain Ownership
+- Check the successfully gained SSL certificate
 
 Let's begin!
 
@@ -86,5 +87,22 @@ This successfully displays the file content, so we're ready to let Certbot do
 his thing and confirm that we legitimately own il-test.excell-mobility.de .
 Hit 'Enter' to continue.
 
+## Step 5: check the successfully gained SSL certificate
+Certbot created the private key locally (at least they say so) using a key size
+of 4096 bits and put it into the local machine's directory **/etc/letsencrypt/live/il.test.excell-mobility.de** .
+The Certificate Signing Request (CSR) file will be found there, too.
+We need sudo rights to access the the private key.
 
+Now it's time to validate our new and shiny SSL certificate:
+```bash
+$ openssl x509 -in /etc/letsencrypt/live/il-test.excell-mobility.de/cert.pem -text
+```
+
+The certificate is **valid for 90 days** as expected for our domain il-test.excell-mobility.de, created
+by the **Let's Encrypt Authority X3** using a key size of **4096 bits** . Awesome!
+
+As there are many different web servers out there like Apache webserver, nginx etc., 
+installing this SSL certificate on the web server is out of scope of this tutorial.
+But have no fear, just fire up your favorite browser and enter 'ubuntu install ssl certificate'.
+Cheers! 🍻
 
