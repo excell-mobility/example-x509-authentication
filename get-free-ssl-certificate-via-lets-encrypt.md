@@ -105,14 +105,14 @@ The certificate is **valid for 90 days** for our domain il-test.excell-mobility.
 by the **Let's Encrypt Authority X3** using a key size of **4096 bits** . Awesome!
 
 
-## Step 6: Upgrade your vhost to support / enforce HTTPS connections
+## Step 6: Upgrade your vhost to enforce HTTPS connections
 As there are many different web servers out there like Apache webserver, nginx, lighttpd etc., 
 we'll focus on setting up the SSL certificate with Apache webserver. For a tutorial on setting up
 SSL certificates using other webserver software, like nginx, please consult your favorite
 search engine (["install ssl certificate ubuntu"](https://www.google.de/?q=install%20ssl%20certificate%20ubuntu)).
 
-We'll be upgrading the existing vhost to enforce HTTPS connections only by extending the vhost and .htaccess configuration.
-Let's start with the Apache vhost configuration. We open the vhost configuration file **il-test.excell-mobility.de.conf**
+We'll be upgrading the existing vhost to enforce HTTPS connections only by extending the Apache vhost configuration.
+We open the vhost configuration file **il-test.excell-mobility.de.conf**
 and modify port the webserver is listening on to the SSL standard port 443:
 
 ```apache
@@ -146,6 +146,24 @@ else
 SSLCertificateChainFile /path/to/ca/intermediate/certificate/file.crt
 ```
 
+At this point, our server will listen on port 443 only. This is a problem for anybody sending requests via HTTP (port 80).
+To solve this, we add a general redirect from HTTP to HTTPS **at the top of our vhost configuration file**:
 
-Cheers! 🍻
+```apache
+<VirtualHost *:80>
+    ServerName il-test.excell-mobility.de
+    Redirect permanent / https://il-test.excell-mobility.de
+</VirtualHost>
+```
+
+After that, any HTTP request on port 80 will be redirected to HTTPS on port 443. Almost done, last thing to do is to enable
+the Apache SSL module and to restart the Apache webserver on the command line:
+
+```bash
+sudo a2enmod ssl
+sudo service apache2 restart
+```
+
+Et voilà, HTTPS in it's truest form, using a free & valid SSL certificate on our test server! This concludes my tutorial,
+if you like'd this or stumbled apon an error, let me know. Cheers! 🍻
 
