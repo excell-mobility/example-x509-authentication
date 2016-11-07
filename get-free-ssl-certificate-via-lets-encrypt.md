@@ -164,6 +164,6 @@ $ sudo a2enmod ssl
 $ sudo service apache2 restart
 ```
 
-Et voilà, HTTPS in it's truest form, using a free & valid SSL certificate on our test server! This concludes my tutorial,
+Et voilà, HTTPS in its truest form, using a free & valid SSL certificate on our test server! This concludes my tutorial,
 if you like'd this or stumbled apon an error, let me know. Cheers! 🍻
 
