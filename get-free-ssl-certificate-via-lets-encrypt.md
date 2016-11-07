@@ -18,6 +18,7 @@ To obtain the certificate, we have to go through the following steps:
 - Run Certbot Software to prepare the SSL certificate
 - Confirm the Domain Ownership
 - Check the successfully gained SSL certificate
+- Use the SSL certificate with your favorite webserver software!
 
 Let's begin!
 
@@ -41,7 +42,9 @@ This is possible by using the -d command-line option, see [command-line options]
 In our case, this will simply be **il-test.excell-mobility.de** .
 
 Secondly, we need to choose a [key size](https://en.wikipedia.org/wiki/Key_size) for our SSL certificate. This will define
-the encrypting algorithm's security's upper-bound. Select a key size of your choice, here we will
+the encrypting algorithm's security's upper-bound. A nice collection of safer encryption parameters
+for different applications and a good starting point for further reeding is 
+[https://cipherli.st/](https://cipherli.st/).Select a key size of your choice, here we will
 be using **4096 bits**.
 
 ## Step 3: Run the Certbot software!
@@ -101,11 +104,22 @@ $ openssl x509 -in /etc/letsencrypt/live/il-test.excell-mobility.de/cert.pem -te
 The certificate is **valid for 90 days** for our domain il-test.excell-mobility.de, created
 by the **Let's Encrypt Authority X3** using a key size of **4096 bits** . Awesome!
 
-As there are many different web servers out there like Apache webserver, nginx etc., 
-installing this SSL certificate on the web server is out of scope of this tutorial.
-But have no fear, just fire up your favorite browser and enter
- 
-'ubuntu install ssl certificate'
 
-. Cheers! 🍻
+## Step 6: Upgrade your vhost to support / enforce HTTPS connections
+As there are many different web servers out there like Apache webserver, nginx, lighttpd etc., 
+we'll focus on setting up the SSL certificate with Apache webserver. For a tutorial on setting up
+SSL certificates using other webserver software, like nginx, please consult your favorite
+search engine (["install ssl certificate ubuntu"](https://www.google.de/?q=install%20ssl%20certificate%20ubuntu)).
+
+We'll be upgrading the existing vhost to enforce HTTPS connections only by extending the vhost and .htaccess configuration.
+Let's start with the Apache vhost configuration. We open the vhost configuration file **il-test.excell-mobility.de.conf**
+and modify port the webserver is listening on to the SSL standard port 443:
+
+```apache
+<VirtualHost *:443>
+```
+
+
+
+Cheers! 🍻
 
