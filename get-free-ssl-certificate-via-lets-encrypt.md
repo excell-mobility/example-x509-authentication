@@ -160,8 +160,8 @@ After that, any HTTP request on port 80 will be redirected to HTTPS on port 443.
 the Apache SSL module and to restart the Apache webserver on the command line:
 
 ```bash
-sudo a2enmod ssl
-sudo service apache2 restart
+$ sudo a2enmod ssl
+$ sudo service apache2 restart
 ```
 
 Et voilà, HTTPS in it's truest form, using a free & valid SSL certificate on our test server! This concludes my tutorial,
