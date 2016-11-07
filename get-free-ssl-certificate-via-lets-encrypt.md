@@ -119,6 +119,32 @@ and modify port the webserver is listening on to the SSL standard port 443:
 <VirtualHost *:443>
 ```
 
+After that, we'll activate SSL and provide the necessary paths to the certificate and key files:
+
+```apache
+SSLEngine On
+SSLCertificateFile /path/to/certificate/file.crt
+SSLCertificateKeyFile /path/to/certificate/private/key/file.key
+```
+
+Now, we add the path to the CA's intermediate bundle, the chain file. Apache changed the configuration parameter with version 2.4.8,
+so we check our Apache version using the command line interface:
+
+```bash
+$ apache2 -v
+```
+
+For Apache 2.4.8 and greater, we'll add the following to our vhost configuration:
+
+```apache
+SSLCACertificateFile /path/to/ca/intermediate/certificate/file.crt
+```
+
+else
+
+```apache
+SSLCertificateChainFile /path/to/ca/intermediate/certificate/file.crt
+```
 
 
 Cheers! 🍻
