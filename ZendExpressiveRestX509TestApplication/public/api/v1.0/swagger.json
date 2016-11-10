@@ -38,6 +38,9 @@
                     "200": {
                         "description": "The \"hello\" message has successfully been responded."
                     },
+                    "400": {
+                        "description": "Bad request - maybe the \"name\" parameter was not set ?"
+                    },
                     "401": {
                         "description": "Unauthorized"
                     }
