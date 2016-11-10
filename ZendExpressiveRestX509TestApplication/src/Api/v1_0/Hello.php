@@ -1,13 +1,13 @@
 <?php
 
-namespace App;
+namespace App\Api\v1_0;
 
 use Zend\Diactoros\Response;
 use Zend\Diactoros\Response\JsonResponse;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\ServerRequestInterface;
 
-class PingAction
+class Hello
 {
     public function __invoke(ServerRequestInterface $request, ResponseInterface $response, callable $next = null)
     {
@@ -19,6 +19,12 @@ class PingAction
             return $errorResponse;
         }
 
-        return new JsonResponse(['ack' => time()]);
+        $responseArray = [
+            'message' => 'Hello, ' . $requestParams['name'] . '!',
+            'name' => $requestParams['name'],
+            'ack' => time(),
+        ];
+
+        return new JsonResponse($responseArray);
     }
 }

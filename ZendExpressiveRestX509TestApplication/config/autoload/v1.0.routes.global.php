@@ -1,6 +1,7 @@
 <?php
 
 use Zend\Expressive\Helper\BodyParams\BodyParamsMiddleware;
+use App\Api\v1_0\Hello;
 
 return [
     'dependencies' => [
@@ -13,7 +14,7 @@ return [
             BodyParamsMiddleware::class => BodyParamsMiddleware::class,
 
             // actions
-            App\PingAction::class => App\PingAction::class,
+            Hello::class => Hello::class
         ],
         'factories' => [
 
@@ -32,7 +33,7 @@ return [
             'path' => '/api/v1.0/hello',
             'middleware' => [
                 BodyParamsMiddleware::class,
-                App\PingAction::class,
+                Hello::class
             ],
             'allowed_methods' => ['GET', 'POST'],
         ],
