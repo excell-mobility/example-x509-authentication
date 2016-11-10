@@ -1,0 +1,59 @@
+swagger: '2.0'
+
+info:
+  title: ExCELL X509 example HelloWorld API
+  version: 'v1.0'
+  contact:
+    name: André Rademacher
+    email: andre.rademacher@entiretec.com
+    url: http://www.entiretec.com
+  description: 'This represents a very simple API for demonstrating the Intergration Layers authentication mechanism'
+
+schemes:
+  - https
+
+host: example-x509-authentication.dev
+
+basePath: '/api/v1.0'
+
+produces:
+  - application/json
+
+paths:
+
+  /hello:
+
+    post:
+
+      summary: Server responds to your "hello" message addressing you with the name entered.
+      description: This sends a "hello" message to the server. The server will respond and address you with your name.
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/message'
+          required: true
+          description: POST body
+
+
+      responses:
+
+        200:
+          description: The "hello" message has successfully been responded.
+        401:
+          description: Unauthorized
+          
+
+definitions:
+  message:
+    description: the message object
+    properties:
+      name:
+        type: string
+        description: The caller's name.
+
+    required:
+      - name
+
+
+          
