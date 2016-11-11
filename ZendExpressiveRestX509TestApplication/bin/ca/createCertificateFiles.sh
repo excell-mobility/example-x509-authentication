@@ -10,33 +10,40 @@ rootCaPrivateKeyFileName="root.ca.private.encrypted.key"
 rootCaPrivateKeyAlgorithm="-aes256"
 rootCaPrivateKeyBits=4096
 rootCaCertFileName="root.ca.certificate.crt"
-rootCaCertAlgorithm="-sha256"
+rootCaCertAlgorithm="-sha512"
 rootCaCertExtension="-extensions v3_ca"
 rootCaCertValidDays="3650"
+rootCaConfigPath="./"
+rootCaConfigFileName="rootca.openssl.cnf"
+rootCaIndexFileName="index.txt"
+rootCaSerialFileName="serial"
 
 # settings intermediate CA
 intermediateCaPath="./../../data/ca/intermediate/"
 intermediateCaPrivateKeyFileName="intermediate.ca.private.encrypted.key"
 intermediateCaPrivateKeyAlgorithm="-aes256"
 intermediateCaPrivateKeyBits=4096
-intermediateCaCsrAlgorithm="-sha256"
+intermediateCaCsrAlgorithm="-sha512"
 intermediateCaCsrFileName="intermediate.ca.csr"
 intermediateCaCertFileName="intermediate.ca.certificate.crt"
-intermediateCaCertAlgorithm="-sha256"
+intermediateCaCertAlgorithm="sha512"
 intermediateCaCertValidDays="1825"
 intermediateCaCertSerial="01"                       # <-- update this in case a new cert is created!
-intermediateCaCertExtPath="./"
-intermediateCaCertExtFileName="v3_ca.ext"
+intermediateCaExtensions="v3_intermediate_ca"
 intermediateCaCertChainFileName="intermediate.ca.certificate.chainfile.crt"
+intermediateCaConfigPath="./"
+intermediateCaConfigFileName="intermediateca.openssl.cnf"
 
 
 # step 1: create the root certification authority's private key
 mkdir -p ${rootCaPath}
+touch ${rootCaPath}${rootCaIndexFileName}
+echo 1000 > ${rootCaPath}${rootCaSerialFileName}
 openssl genrsa ${rootCaPrivateKeyAlgorithm} -out ${rootCaPath}${rootCaPrivateKeyFileName} ${rootCaPrivateKeyBits}
 chmod 400 ${rootCaPath}${rootCaPrivateKeyFileName}
 
 # step 2: create the self signed root certificate using the private key from step 1
-openssl req -x509 -new ${rootCaCertAlgorithm} ${rootCaCertExtension} -days ${rootCaCertValidDays} -key ${rootCaPath}${rootCaPrivateKeyFileName} -out ${rootCaPath}${rootCaCertFileName}
+openssl req -x509 -new ${rootCaCertAlgorithm} ${rootCaCertExtension} -days ${rootCaCertValidDays} -key ${rootCaPath}${rootCaPrivateKeyFileName} -out ${rootCaPath}${rootCaCertFileName} -config ${rootCaConfigPath}${rootCaConfigFileName}
 chmod 444 ${rootCaPath}${rootCaPrivateKeyFileName}
 
 # step 3: verify root certificate
@@ -48,11 +55,11 @@ openssl genrsa ${intermediateCaPrivateKeyAlgorithm} -out ${intermediateCaPath}${
 chmod 400 ${intermediateCaPath}${intermediateCaPrivateKeyFileName}
 
 # step 5: create the intermediate certification authority's certification signing request using the key from step 4
-openssl req -new ${intermediateCaCsrAlgorithm} -key ${intermediateCaPath}${intermediateCaPrivateKeyFileName} -out ${intermediateCaPath}${intermediateCaCsrFileName}
+openssl req -config ${intermediateCaConfigPath}${intermediateCaConfigFileName} -new ${intermediateCaCsrAlgorithm} -key ${intermediateCaPath}${intermediateCaPrivateKeyFileName} -out ${intermediateCaPath}${intermediateCaCsrFileName}
 chmod 444 ${intermediateCaPath}${intermediateCaCsrFileName}
 
 # step 6: create the intermediate certification authority's certificate using the certification signing request and the root certification authority's private key
-openssl x509 -req -extfile ${intermediateCaCertExtPath}${intermediateCaCertExtFileName} -days ${intermediateCaCertValidDays} -in ${intermediateCaPath}${intermediateCaCsrFileName} -CA ${rootCaPath}${rootCaCertFileName} -CAkey ${rootCaPath}${rootCaPrivateKeyFileName} -set_serial ${intermediateCaCertSerial} -out ${intermediateCaPath}${intermediateCaCertFileName}
+openssl ca -config ${rootCaConfigPath}${rootCaConfigFileName} -extensions ${intermediateCaExtensions} -days ${intermediateCaCertValidDays} -notext -md ${intermediateCaCertAlgorithm} -in ${intermediateCaPath}${intermediateCaCsrFileName} -out ${intermediateCaPath}${intermediateCaCertFileName}
 chmod 444 ${intermediateCaPath}${intermediateCaCertFileName}
 
 # step 7: verify the intermediate certificate

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# intermediate CA
+intermediateCaConfigPath="./"
+intermediateCaConfigFileName="intermediateca.openssl.cnf"
+
 # settings key pair
 clientKeyPairAlgorithm="-aes256"
 clientKeyPairBits=4096
@@ -21,5 +25,5 @@ openssl rsa -in ${clientKeyPairPath}${clientPrivateKeyFileName} -pubout -out ${c
 chmod 444 ${clientKeyPairPath}${clientPublicKeyFileName}
 
 # step 3: create the CSR (certificate signing request)
-openssl req -new ${clientCsrAlgorithm} -key ${clientKeyPairPath}${clientPrivateKeyFileName} -out ${clientKeyPairPath}${clientCsrFileName}
+openssl req -config ${intermediateCaConfigPath}${intermediateCaConfigFileName} -new ${clientCsrAlgorithm} -key ${clientKeyPairPath}${clientPrivateKeyFileName} -out ${clientKeyPairPath}${clientCsrFileName}
 chmod 444 ${clientKeyPairPath}${clientCsrFileName}
