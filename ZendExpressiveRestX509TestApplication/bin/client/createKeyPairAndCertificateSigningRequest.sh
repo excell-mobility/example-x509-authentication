@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # intermediate CA
-intermediateCaConfigPath="./"
+intermediateCaConfigPath="./../ca/"
 intermediateCaConfigFileName="intermediateca.openssl.cnf"
 
 # settings key pair

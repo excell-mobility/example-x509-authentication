@@ -34,9 +34,12 @@ intermediateCaCertChainFileName="intermediate.ca.certificate.chainfile.crt"
 intermediateCaConfigPath="./"
 intermediateCaConfigFileName="intermediateca.openssl.cnf"
 
+# settings client
+clientPath="./../../data/client/"
 
 # step 1: create the root certification authority's private key
 mkdir -p ${rootCaPath}
+mkdir -p ${clientPath}
 touch ${rootCaPath}${rootCaIndexFileName}
 echo 1000 > ${rootCaPath}${rootCaSerialFileName}
 openssl genrsa ${rootCaPrivateKeyAlgorithm} -out ${rootCaPath}${rootCaPrivateKeyFileName} ${rootCaPrivateKeyBits}

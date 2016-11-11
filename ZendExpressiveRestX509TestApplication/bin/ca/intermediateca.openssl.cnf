@@ -10,13 +10,13 @@ dir               = ./../../data
 certs             = $dir/client
 crl_dir           = $dir/ca
 new_certs_dir     = $dir/client
-database          = $dir/ca/index.txt
-serial            = $dir/ca/serial
-RANDFILE          = $dir/ca/.rand
+database          = $dir/ca/root/index.txt
+serial            = $dir/ca/root/serial
+RANDFILE          = $dir/ca/root/.rand
 
 # The intermediate key and intermediate certificate.
-private_key       = $dir/ca/intermediate.ca.private.encrypted.key
-certificate       = $dir/ca/intermediate.ca.certificate.crt
+private_key       = $dir/ca/intermediate/intermediate.ca.private.encrypted.key
+certificate       = $dir/ca/intermediate/intermediate.ca.certificate.crt
 
 # For certificate revocation lists.
 crlnumber         = $dir/ca/crlnumber
