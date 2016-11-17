@@ -29,7 +29,8 @@ intermediateCaCertSerial="01"                       # <-- update this in case a 
 intermediateCaCertChainFileName="intermediate.ca.certificate.chainfile.crt"
 intermediateCaConfigPath="./"
 intermediateCaConfigFileName="intermediateca.openssl.cnf"
-intermediateCaExtensions="server_cert"
+#intermediateCaExtensions="server_cert"
+intermediateCaExtensions="usr_cert"
 
 # settings client key pair
 clientKeyPairAlgorithm="-aes256"
