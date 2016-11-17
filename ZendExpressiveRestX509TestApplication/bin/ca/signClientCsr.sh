@@ -44,6 +44,7 @@ clientCrtFileName="client.crt"
 clientCrtAlgorithm="sha512"
 clientCrtDays=365
 clientP12FileName="client.p12"
+clientPemFileName="client.pem"
 
 # Step 1: sign user certificate request and create client certificate
 openssl ca -config ${intermediateCaConfigPath}${intermediateCaConfigFileName} -extensions ${intermediateCaExtensions} -notext -in ${clientKeyPairPath}${clientCsrFileName} -out ${clientKeyPairPath}${clientCrtFileName} -days ${clientCrtDays} -md ${clientCrtAlgorithm}
@@ -54,3 +55,6 @@ openssl verify -CAfile ${intermediateCaPath}${intermediateCaCertChainFileName} $
 
 # Step 3: convert client certificate to p12 format for browser import
 openssl pkcs12 -export -clcerts -in ${clientKeyPairPath}${clientCrtFileName} -inkey ${clientKeyPairPath}${clientPrivateKeyFileName} -out ${clientKeyPairPath}${clientP12FileName}
+
+# Step 4: create .pem file for client authentication
+openssl pkcs12 -in ${clientKeyPairPath}${clientP12FileName} -out ${clientKeyPairPath}${clientPemFileName}
