@@ -64,4 +64,60 @@ etc. as you wish. When you're done, it should look somewhat like this:
 > Common Name []:example.org  
 > Email Address []:  
 
-## Step 3: Sign CSR and create client certificate files 
+## Step 3: Sign CSR and create client certificate files
+Now for the fun part. We will sign the CSR with the Intermediate CA's private key and
+create the client's final certificate files. Because the private key is heavily encrypted,
+only the person knowing the password for this file can sign the CSR.
+
+For that, we use the last script:
+
+```bash
+$ bin/ca/signClientCsr.sh
+```
+
+First, we're asked for the Intermediate CA's private key password. After entering correctly,
+we are presented with the certificate details, meaning entered validity, certificate values
+and extension data. Now we are asked if the certificate should be signed. Take a minute,
+check the displayed certificate data and answer with "y". Commit that with a second "y".  
+This should look somewhat like this:
+
+> Using configuration from ./intermediateca.openssl.cnf  
+> Enter pass phrase for ./../../data/ca/intermediate/intermediate.ca.private.encrypted.key:  
+> Check that the request matches the signature  
+> Signature ok  
+> Certificate Details:  
+>         Serial Number: 4107 (0x100b)  
+>         Validity   
+>             Not Before: Mar  6 12:51:01 2017 GMT  
+>             Not After : Mar  6 12:51:01 2018 GMT  
+>         Subject:  
+>             countryName               = DE  
+>             organizationName          = Example Organisation  
+>             organizationalUnitName    = Example Client  
+>             commonName                = example.org  
+>         X509v3 extensions:  
+>             X509v3 Basic Constraints:  
+>                 CA:FALSE  
+>             Netscape Cert Type:  
+>                 SSL Client, S/MIME  
+>             Netscape Comment:  
+>                 OpenSSL Generated Client Certificate  
+>             X509v3 Subject Key Identifier:  
+>                 33:E0:13:B0:B5:70:C0:C3:2F:AA:0C:C0:D8:22:19:26:08:1B:61:8C  
+>             X509v3 Authority Key Identifier:  
+>                 keyid:1C:E0:CB:EE:15:53:FB:D1:68:1E:40:9C:6B:43:8A:6A:9A:FA:DC:27  
+>             X509v3 Key Usage: critical  
+>                 Digital Signature, Non Repudiation, Key Encipherment  
+>             X509v3 Extended Key Usage:  
+>                 TLS Web Client Authentication, E-mail Protection  
+> Certificate is to be certified until Mar  6 12:51:01 2018 GMT (365 days)  
+>  Sign the certificate? [y/n]:y  
+>  1 out of 1 certificate requests certified, commit? [y/n]y  
+>  Write out database with 1 new entries  
+>  Data Base Updated  
+>  ./../../data/client/client.crt: OK  
+
+**Congratulation!** Our client certificate for example.org has successfully been created
+and can be found in the directory **data/client**.
+Additionally, the client's certificate files have been converted in several useful
+container formats, e.g. .p12 for Firefox browser.
