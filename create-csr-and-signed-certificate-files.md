@@ -40,29 +40,31 @@ us to send all the data needed for creating the certificate to the Intermediate 
 revealing our secret, the private key. Enter the values for Organization Name, Common Name
 etc. as you wish. When you're done, it should look somewhat like this:
 
-> Generating RSA private key, 4096 bit long modulus  
-> ............................................++  
-> ...........................++  
-> e is 65537 (0x10001)  
-> Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
-> Verifying - Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
-> Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
-> writing RSA key  
-> Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
-> You are about to be asked to enter information that will be incorporated  
-> into your certificate request.  
-> What you are about to enter is what is called a Distinguished Name or a DN.  
-> There are quite a few fields but you can leave some blank  
-> For some fields there will be a default value,  
-> If you enter '.', the field will be left blank.  
-> \-----  
-> Country Name (2 letter code) [DE]:DE  
-> State or Province Name []:  
-> Locality Name []:  
-> Organization Name []:Example Organisation  
-> Organizational Unit Name []:Example client  
-> Common Name []:example.org  
-> Email Address []:  
+```
+Generating RSA private key, 4096 bit long modulus  
+............................................++  
+...........................++  
+e is 65537 (0x10001)  
+Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
+Verifying - Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
+Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
+writing RSA key  
+Enter pass phrase for ./../../data/client/client.private.encrypted.key:  
+You are about to be asked to enter information that will be incorporated  
+into your certificate request.  
+What you are about to enter is what is called a Distinguished Name or a DN.  
+There are quite a few fields but you can leave some blank  
+For some fields there will be a default value,  
+If you enter '.', the field will be left blank.  
+-----  
+Country Name (2 letter code) [DE]:DE  
+State or Province Name []:  
+Locality Name []:  
+Organization Name []:Example Organisation  
+Organizational Unit Name []:Example client  
+Common Name []:example.org  
+Email Address []:  
+```
 
 ## Step 3: Sign CSR and create client certificate files
 Now for the fun part. We will sign the CSR with the Intermediate CA's private key and
@@ -81,41 +83,45 @@ and extension data. Now we are asked if the certificate should be signed. Take a
 check the displayed certificate data and answer with "y". Commit that with a second "y".  
 This should look somewhat like this:
 
-> Using configuration from ./intermediateca.openssl.cnf  
-> Enter pass phrase for ./../../data/ca/intermediate/intermediate.ca.private.encrypted.key:  
-> Check that the request matches the signature  
-> Signature ok  
-> Certificate Details:  
->         Serial Number: 4107 (0x100b)  
->         Validity   
->             Not Before: Mar  6 12:51:01 2017 GMT  
->             Not After : Mar  6 12:51:01 2018 GMT  
->         Subject:  
->             countryName               = DE  
->             organizationName          = Example Organisation  
->             organizationalUnitName    = Example Client  
->             commonName                = example.org  
->         X509v3 extensions:  
->             X509v3 Basic Constraints:  
->                 CA:FALSE  
->             Netscape Cert Type:  
->                 SSL Client, S/MIME  
->             Netscape Comment:  
->                 OpenSSL Generated Client Certificate  
->             X509v3 Subject Key Identifier:  
->                 33:E0:13:B0:B5:70:C0:C3:2F:AA:0C:C0:D8:22:19:26:08:1B:61:8C  
->             X509v3 Authority Key Identifier:  
->                 keyid:1C:E0:CB:EE:15:53:FB:D1:68:1E:40:9C:6B:43:8A:6A:9A:FA:DC:27  
->             X509v3 Key Usage: critical  
->                 Digital Signature, Non Repudiation, Key Encipherment  
->             X509v3 Extended Key Usage:  
->                 TLS Web Client Authentication, E-mail Protection  
-> Certificate is to be certified until Mar  6 12:51:01 2018 GMT (365 days)  
->  Sign the certificate? [y/n]:y  
->  1 out of 1 certificate requests certified, commit? [y/n]y  
->  Write out database with 1 new entries  
->  Data Base Updated  
->  ./../../data/client/client.crt: OK  
+```
+Using configuration from ./intermediateca.openssl.cnf  
+Enter pass phrase for ./../../data/ca/intermediate/intermediate.ca.private.encrypted.key:  
+Check that the request matches the signature  
+Signature ok  
+Certificate Details:  
+        Serial Number: 4107 (0x100b)  
+        Validity   
+            Not Before: Mar  6 12:51:01 2017 GMT  
+            Not After : Mar  6 12:51:01 2018 GMT  
+        Subject:  
+            countryName               = DE  
+            organizationName          = Example Organisation  
+            organizationalUnitName    = Example Client  
+            commonName                = example.org  
+        X509v3 extensions:  
+            X509v3 Basic Constraints:  
+                CA:FALSE  
+            Netscape Cert Type:  
+                SSL Client, S/MIME  
+            Netscape Comment:  
+                OpenSSL Generated Client Certificate  
+            X509v3 Subject Key Identifier:  
+                33:E0:13:B0:B5:70:C0:C3:2F:AA:0C:C0:D8:22:19:26:08:1B:61:8C  
+            X509v3 Authority Key Identifier:  
+                keyid:1C:E0:CB:EE:15:53:FB:D1:68:1E:40:9C:6B:43:8A:6A:9A:FA:DC:27
+                  
+            X509v3 Key Usage: critical  
+                Digital Signature, Non Repudiation, Key Encipherment  
+            X509v3 Extended Key Usage:  
+                TLS Web Client Authentication, E-mail Protection  
+Certificate is to be certified until Mar  6 12:51:01 2018 GMT (365 days)  
+Sign the certificate? [y/n]:y
+  
+1 out of 1 certificate requests certified, commit? [y/n]y  
+Write out database with 1 new entries  
+Data Base Updated  
+./../../data/client/client.crt: OK  
+```
 
 **Congratulation!** Our client certificate for example.org has successfully been created
 and can be found in the directory **data/client**.
