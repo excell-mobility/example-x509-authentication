@@ -1,5 +1,5 @@
-Create certificate signing request (CSR) and signed certificate files
-=====================================================================
+Create certificate signing request (CSR) and certificate files
+===============================================================
 ## What is this all about ?
 This short document describes how to create a CSR (certificate signing request)
 and the related certificate files, signed by the Intermediate CA, in 3 easy steps,
@@ -55,7 +55,7 @@ etc. as you wish. When you're done, it should look somewhat like this:
 > There are quite a few fields but you can leave some blank  
 > For some fields there will be a default value,  
 > If you enter '.', the field will be left blank.  
-> -----  
+> \-----  
 > Country Name (2 letter code) [DE]:DE  
 > State or Province Name []:  
 > Locality Name []:  
