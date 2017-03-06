@@ -1,5 +1,5 @@
-Create certificate signing request (CSR) and certificate files
-===============================================================
+Create valid client certificates via CSR from scratch!
+======================================================
 ## What is this all about ?
 This short document describes how to create a CSR (certificate signing request)
 and the related certificate files, signed by the Intermediate CA, in 3 easy steps,
@@ -76,7 +76,7 @@ $ bin/ca/signClientCsr.sh
 ```
 
 First, we're asked for the Intermediate CA's private key password. After entering correctly,
-we are presented with the certificate details, meaning entered validity, certificate values
+we are presented with the certificate details, meaning validity, entered certificate values
 and extension data. Now we are asked if the certificate should be signed. Take a minute,
 check the displayed certificate data and answer with "y". Commit that with a second "y".  
 This should look somewhat like this:
