@@ -1,8 +1,8 @@
 <?php
  
 $url = "https://example-x509-authentication.dev";
-$cert_file = './client.pem';
-$cert_password = '123456';
+$cert_file = './example.org.pem';
+$cert_password = 'example123';
  
 $ch = curl_init();
  
