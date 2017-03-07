@@ -3,7 +3,7 @@ Test request with SSL client certificate
 
 ## What is this all about ?
 Using the scripts as shown in 
-[Create valid client SSL certificates via CSR from scratch!](https://github.com/excell-mobility/example-x509-authentication/blob/add-certificates/create-csr-and-signed-certificate-files.md)
+[Create valid client SSL certificates via CSR from scratch!](https://github.com/excell-mobility/example-x509-authentication/blob/master/create-csr-and-signed-certificate-files.md)
 will provide us with our own Root CA, Intermediate CA & client SSL certificates.
 Here, we'll see a valid example SSL client certificate for the domain **example.org** in action
 by using a short PHP test script to run a request against the Integration Layer's REST API.
@@ -16,13 +16,13 @@ ExCELL Integration Layer's REST API's **/health** endpoint. The related SwaggerU
 at https://il-test.excell-mobility.de/api/v1/#!/health/get_health .
 
 We will use the given example.org client certificate files, found in the directory 
-[ZendExpressiveRestX509TestApplication/bin/client/exampleFiles](https://github.com/excell-mobility/example-x509-authentication/tree/add-certificates/ZendExpressiveRestX509TestApplication/bin/client/exampleFiles) .
+[ZendExpressiveRestX509TestApplication/bin/client/exampleFiles](https://github.com/excell-mobility/example-x509-authentication/tree/master/ZendExpressiveRestX509TestApplication/bin/client/exampleFiles) .
 We chose curl as HTTP client do do the heavy lifting, so setting the right options and
 evaluating the result will do.
 
 ## Send a request using the example SSL client certificate
 The test script
-[test.php](https://github.com/excell-mobility/example-x509-authentication/blob/add-certificates/ZendExpressiveRestX509TestApplication/bin/client/exampleFiles/test.php)
+[test.php](https://github.com/excell-mobility/example-x509-authentication/blob/master/ZendExpressiveRestX509TestApplication/bin/client/exampleFiles/test.php)
 is located in the same directory as the example client certificates. Just point your shell
 in the direction of the test script and run that by typing
 
