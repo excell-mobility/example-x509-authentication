@@ -3,6 +3,6 @@ Here you will find example implementations for authenticated server/client commu
 Starting with Java (SpringBootRestX509TestClient & -Server), adding Implementations in PHP & Python are currently in the making ;) 
 
 ## List of tutorials
-[Securing your vhost using a Let's Encrypt SSL certificate](https://github.com/excell-mobility/example-x509-authentication/blob/add-certificates/get-free-ssl-certificate-via-lets-encrypt.md)  
-[Create valid client certificates via CSR from scratch!](https://github.com/excell-mobility/example-x509-authentication/blob/add-certificates/create-csr-and-signed-certificate-files.md)  
-[Test request with SSL client certificate](https://github.com/excell-mobility/example-x509-authentication/blob/add-certificates/test-request-with-ssl-client-certificate.md)
+[Securing your vhost using a Let's Encrypt SSL certificate](https://github.com/excell-mobility/example-x509-authentication/blob/master/get-free-ssl-certificate-via-lets-encrypt.md)  
+[Create valid client certificates via CSR from scratch!](https://github.com/excell-mobility/example-x509-authentication/blob/master/create-csr-and-signed-certificate-files.md)  
+[Test request with SSL client certificate](https://github.com/excell-mobility/example-x509-authentication/blob/master/test-request-with-ssl-client-certificate.md)
