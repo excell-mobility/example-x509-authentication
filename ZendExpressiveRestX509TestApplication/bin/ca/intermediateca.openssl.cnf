@@ -105,8 +105,8 @@ nsCertType = client, email
 nsComment = "OpenSSL Generated Client Certificate"
 subjectKeyIdentifier = hash
 authorityKeyIdentifier = keyid,issuer
-keyUsage = critical, nonRepudiation, digitalSignature, keyEncipherment
-extendedKeyUsage = clientAuth, emailProtection
+keyUsage = digitalSignature
+extendedKeyUsage = clientAuth
 
 [ server_cert ]
 # Extensions for server certificates (`man x509v3_config`).

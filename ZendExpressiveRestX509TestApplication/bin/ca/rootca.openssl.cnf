@@ -37,7 +37,7 @@ policy            = policy_strict
 # The root CA should only sign intermediate certificates that match.
 # See the POLICY FORMAT section of `man ca`.
 countryName             = match
-stateOrProvinceName     = match
+stateOrProvinceName     = optional
 organizationName        = match
 organizationalUnitName  = optional
 commonName              = supplied
