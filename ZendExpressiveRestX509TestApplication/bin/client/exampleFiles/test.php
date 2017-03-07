@@ -2,7 +2,7 @@
 <?php
  
 $targetUrl = "https://il-test.excell-mobility.de/api/v1/health";
-$cert_file = './exampleFiles/example.org.pem';
+$cert_file = './example.org.pem';
 $cert_password = 'example123';
  
 $ch = curl_init();
