@@ -9,7 +9,7 @@ Your SSL certificate does not need to be signed by the Let's Encrypt CA, any val
 ## Extending the vHost configuration
 Open your vHost configuration file and spot the **\<VirtualHost \*:443\>** section. Here,
 you should find the directives "ServerName", "DocumentRoot", "SSLEngine" as well as 
-SSLCertificateFile and SSLCertificateKeyFile, so your vHost is up and running and allows
+"SSLCertificateFile" and "SSLCertificateKeyFile", so your vHost is up and running and allows
 access via HTTPS.
 
 We are about to add 4 directives here to enable client certificates and let Apache Web Server
@@ -35,15 +35,15 @@ SSL handshake failure and you are able to display a nice error page explaining w
 or send the appropriate API response.
 
 ### SSLVerifyDepth
-This tellds mod_ssl the maximum number of intermediate certificate issuers which are max allowed
+This tells mod_ssl the maximum number of intermediate certificate issuers which are max allowed
 to be followed while verifying the client certificate. 0 means self-signed client certificates only.
 1 means the client-certificate can be self-signed or has to be signed by a CA that is directly
 known to the server. Choosing 2 allows one Intermediate CA that is not directly known to the server.
 
 ### SSLOptions
-Setting both options allow your application to inspect both the client and server certificate
-and retrieve the verification process's result. In PHP, this can be found in
+Setting both options allows your application to inspect both the client and server certificate
+and retrieve the verification process's result. In PHP, this verification result can be found in
 **$_SERVER['SSL_CLIENT_VERIFY']**. The value is set to NONE in case no client certificate is
-sent, SUCCESS when the verification was successful.
+sent or SUCCESS when the verification was successful.
 
 
