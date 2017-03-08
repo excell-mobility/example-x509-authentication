@@ -26,9 +26,24 @@ SSLOptions +StdEnvVars +ExportCertData
 This directive sets the path to the SSL CA certificate that will be used to verify the
 client SSL certificate. Be sure to use the chainfile here in case you got a setup with
 Root CA certificate and Intermediate CA certificate, so this file should contain both of them.
+Alternatively, use SSLCACertificatePath and point it to the directory the certificate is located in.
 
 ### SSLVerifyClient
-This one enables client verification. Here, you want to set "optional_no_ca" to make verification
+This one enables client certificate verification. Here, you want to set "optional_no_ca" to make verification
 optional because in the event of an error the connection won't be refused because of a
 SSL handshake failure and you are able to display a nice error page explaining what happened
 or send the appropriate API response.
+
+### SSLVerifyDepth
+This tellds mod_ssl the maximum number of intermediate certificate issuers which are max allowed
+to be followed while verifying the client certificate. 0 means self-signed client certificates only.
+1 means the client-certificate can be self-signed or has to be signed by a CA that is directly
+known to the server. Choosing 2 allows one Intermediate CA that is not directly known to the server.
+
+### SSLOptions
+Setting both options allow your application to inspect both the client and server certificate
+and retrieve the verification process's result. In PHP, this can be found in
+**$_SERVER['SSL_CLIENT_VERIFY']**. The value is set to NONE in case no client certificate is
+sent, SUCCESS when the verification was successful.
+
+
