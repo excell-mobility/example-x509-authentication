@@ -7,7 +7,7 @@ and extends the configuration in a way that the Apache Web Server does the verif
 Your SSL certificate does not need to be signed by the Let's Encrypt CA, any valid certificate will do.
 
 ## Extending the vHost configuration
-Open your vHost configuration file and spot the **<VirtualHost \*:443>** section. Here,
+Open your vHost configuration file and spot the **\<VirtualHost \*:443\>** section. Here,
 you should find the directives "ServerName", "DocumentRoot", "SSLEngine" as well as 
 SSLCertificateFile and SSLCertificateKeyFile, so your vHost is up and running and allows
 access via HTTPS.
