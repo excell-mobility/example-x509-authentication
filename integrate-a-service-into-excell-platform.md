@@ -30,5 +30,8 @@ may use the given tutorials to update your web server's configuration.
 ## Step 1
 
 ## Step 2
+Implement verification of JSON Web Token signatures. This can easily be done using one
+of the available Open Source implementations of JSON Web Token. Choose a library [here](https://jwt.io/).
 
 ## Step 3
+Update SwaggerUI to allow direct usage of JSON Web Token in HTTP Authorization header.
