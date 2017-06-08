@@ -14,8 +14,8 @@ The ExCELL platform provides passwordless authentication for registered services
 
 Before integrating the service into the ExCELL platform, some prerequisites are to 
 be met:
-- A valid SSL certificate is correctly installed and configured. Today, this can be done
-for free using a Let's Encrypt SSL certificate. [Read here how](https://github.com/excell-mobility/example-x509-authentication/blob/master/get-free-ssl-certificate-via-lets-encrypt.md).
+- **A valid SSL certificate is correctly installed and configured.**
+ Today, this can be done for free using a Let's Encrypt SSL certificate. [Read here how](https://github.com/excell-mobility/example-x509-authentication/blob/master/get-free-ssl-certificate-via-lets-encrypt.md).
 - SSL client certificate verification is configured and enabled. [This can be done by
 adding 4 lines of configuration to your Apache virtual host config file](https://github.com/excell-mobility/example-x509-authentication/blob/master/upgrade-vhost-for-ssl-client-certificate-verification.md).
 - A Public Key Infrastructure (provided by ExCELL) and a valid client certificate
