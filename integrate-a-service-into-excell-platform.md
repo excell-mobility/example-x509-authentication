@@ -48,6 +48,11 @@ the remaining string is parsed by the JWT library to form the JWT token.
 this is the ExCELL Integration Layer and the public key can be downloaded [here](https://github.com/excell-mobility/example-x509-authentication/tree/develop/Certificates).
 4. Finally, the library's verification method is called, which does all the magic for you. Done! 
 
+After that, you should be able to reject all requests that don't meet certain criteria:
+* JSON Web Token stored in the HTTP Authorization header
+* JWT is valid and it's signature is verified
+* JWT is not expired and are issues by an authority of your choice (e.g. ExCELL Integration Layer)
+* JWT's "service" claim attunes to your service's hostname
 
-## Step 2
-Update SwaggerUI to allow direct usage of JSON Web Token in HTTP Authorization header.
+
+## Step 2: Update SwaggerUI to allow direct usage of JSON Web Token in HTTP Authorization header.
