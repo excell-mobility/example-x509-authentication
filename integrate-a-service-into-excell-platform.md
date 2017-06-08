@@ -56,3 +56,15 @@ After that, you should be able to reject all requests that don't meet certain cr
 
 
 ## Step 2: Update SwaggerUI to allow direct usage of JSON Web Token in HTTP Authorization header.
+Swagger UI is a great way to get an overview over a new REST API and access it directly.
+As Swagger UI is a REST client itself, no native client is needed. Be sure to use a version that
+supports entering HTTP Authorization headers, [v2.2.8](https://github.com/swagger-api/swagger-ui/releases/tag/v2.2.8)
+or above should do just fine.
+
+In our example case, the content of Swagger UI's "dist" directory is placed in the virtual host's public directory under "/api/v2",
+so that by calling /api/v2 in the browser, you will see the Swagger UI client. The needed API configuration file
+swagger.json can be build or generated using the [swagger editor](http://swagger.io/swagger-editor/),
+which also has an online version available.
+
+The key for adding JWT support with the HTTP Authorization header is Swagger UI's "securityDefinitions" attribute.
+An example configuration can be found [here](https://github.com/excell-mobility/broadcasting-service/blob/develop/public/api/v2/swagger.json).
