@@ -51,7 +51,7 @@ this is the ExCELL Integration Layer and the public key can be downloaded [here]
 After that, you should be able to reject all requests that don't meet certain criteria:
 * JSON Web Token stored in the HTTP Authorization header
 * JWT is valid and it's signature is verified
-* JWT is not expired and are issues by an authority of your choice (e.g. ExCELL Integration Layer)
+* JWT is not expired and is issued by an authority of your choice (e.g. ExCELL Integration Layer)
 * JWT's "service" claim attunes to your service's hostname
 
 
