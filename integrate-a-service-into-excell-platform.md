@@ -59,7 +59,7 @@ After that, you should be able to reject all requests that don't meet certain cr
 
 ## Step 2: Update SwaggerUI to allow direct usage of JSON Web Token in HTTP Authorization header.
 Swagger UI is a great way to get an overview over a new REST API and access it directly.
-As Swagger UI is a REST client itself, no native client is needed. Be sure to use a version that
+As Swagger UI is a REST client itself, no additional native client is needed. Be sure to use a version that
 supports entering HTTP Authorization headers, [v2.2.8](https://github.com/swagger-api/swagger-ui/releases/tag/v2.2.8)
 or above should do just fine.
 
@@ -70,3 +70,33 @@ which also has an online version available.
 
 The key for adding JWT support with the HTTP Authorization header is Swagger UI's "securityDefinitions" attribute.
 An example configuration can be found [here](https://github.com/excell-mobility/broadcasting-service/blob/develop/public/api/v2/swagger.json).
+
+## Step 3: Test the Swagger UI with a real JSON Web Token
+To test the Swagger UI, you need a valid JSON Web Token. In the example case, we use the
+ExCELL Integration Layer Testing instance's Swagger UI to generate one:
+ 
+```
+eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzUxMiJ9
+.eyJpYXQiOjE0OTcwMDA4MDksIm5iZiI6MTQ5NzAwMDgwOSwiZXhwIjoxNDk3MDAxNDA5LCJqdGkiOiJmMDlhMWJi
+My1jZTBhLTUzN2MtOWEzNy0wNzliZjY3NDA2Y2EiLCJpc3MiOiJpbC10ZXN0LmV4Y2VsbC1tb2JpbGl0eS5kZSIsI
+nN1YiI6IkhvcnN0IEluYy4iLCJ1c2VyIjoiaG9yc3Quc2NobWlkdEBob3JzdC1pbmMuY29tIiwic2VydmljZSI6Im
+Jyb2FkY2FzdGluZy10ZXN0LmV4Y2VsbC1tb2JpbGl0eS5kZSJ9
+.gTxBGKgZe3cDQwOszd6hTK9nOyCpnxWCmgCTJ8ssTCi0YY4n9eOa7DO8C9k77gpJDajP8rdHp8jTe41ExO9TfMdd
+_x-Dg7fTsb7Kjz3HjieME4GMrMV-ZOpNmFLQeHGOObqOLx_DP5uRpeBF1Xi40ilEswyTYhX8WXp5w3NFP3xknRw5O
+5M75dhkn5j-ODWwIiwlqkpIBtzfGzeBV8ccqXB0xJIt1yPjtdNcsn9PMjZBaAdMrfGFkLgo_1xsI0K-y7pyihr2Lp
+AoqTrTSsaVoymfwynFSUUY3aLqQtqUu_LHt9NxZ9_adscirX6XzpaP1q_fbnpfzaIumlhoCWfkWFLbKd_3_lty5d4
+-Zkyn4Nn_5dGlOFoUGr6PdtLPu3NGxn_tAAcFrQBYHreqLEfgni0opqkXNjVPFFLy3oexU3e_Atg6Qu2MgQMGBexl
+pfC3TzlvGk_cpqQKFxWbhT3o1jwOMebS85S9HG5ygS4vU9YSo4hVQEH2kIdbgqtgpxprOFfxraDSel3tnFNVSD8pN
+dYuIdhtxZ27ZtXooUF7bduPEuWnQ_8PDE-RLzH3PDCDh0Rn4f-XTH0l7vhmdjVuuzbmzJ4AQQ4r-PM5nX6A6ID7Ah
+M7QxAPOeCPrxgkdciOpM9cBsQMfELobwZvrQbA24b3JfY8bMHw0_L-bip9J2k
+```
+
+To view the token's content, one can use the JWT debugger at [https://jwt.io](https://jwt.io).
+The token was generated on June 09th, 2017, has a lifetime of 10 minutes (600 sec.) and was
+issued by the testing instance of the ExCELL Integration Layer for the use with the testing
+instance of the ExCELL Broadcasting Service. The biggest part of the token here is its signature.
+
+Now you can call your service's Swagger UI, click the "Authorize" button on the top right
+and enter the value for the HTTP Authorization header: "JWT" + \<space\> + \<a generated token like above\>.
+After sending the request, the token is verified by your verification class and you know
+ that the user is authorized to make the call.
