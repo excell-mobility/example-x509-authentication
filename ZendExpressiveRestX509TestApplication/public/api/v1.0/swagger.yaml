@@ -3,10 +3,6 @@ swagger: '2.0'
 info:
   title: ExCELL X509 example HelloWorld API
   version: 'v1.0'
-  contact:
-    name: André Rademacher
-    email: andre.rademacher@entiretec.com
-    url: http://www.entiretec.com
   description: 'This represents a very simple API for demonstrating the Intergration Layers authentication mechanism'
 
 schemes:
