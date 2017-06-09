@@ -36,7 +36,7 @@ only consists of a handful PHP classes.
 This can easily be done using one of the many available Open Source implementations
 of JSON Web Token. Select a library for the language of your choice [here](https://jwt.io/).
 
-The verification process in the ExCELL Broadcasting Service in version 2
+As an example, the verification process in the ExCELL Broadcasting Service in version 2
 is handled in [this](https://github.com/excell-mobility/broadcasting-service/blob/develop/src/Broadcasting/Api/Validation.php)
 class, [lcobucci/jwt](https://github.com/lcobucci/jwt) was chosen as JWT library:
 
@@ -49,6 +49,8 @@ this is the ExCELL Integration Layer and the public key can be downloaded [here]
 4. Finally, the library's verification method is called, which does all the magic for you. Done! 
 
 After that, you should be able to reject all requests that don't meet certain criteria:
+* Protocol HTTPS is used with standard port 443
+* SSL client certificate was sent and is verified by the web server software (e.g. Apache) 
 * JSON Web Token stored in the HTTP Authorization header
 * JWT is valid and it's signature is verified
 * JWT is not expired and is issued by an authority of your choice (e.g. ExCELL Integration Layer)
